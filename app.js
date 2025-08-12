@@ -43,26 +43,30 @@ const exibirTextoInicial = () => {
 exibirTextoInicial();
 
 const verificarChute = () =>{
-  tentativas ++;
   let chute =  document.querySelector("input").value;
-  const mensagemTentativas =  ` em ${tentativas == 1 ? `${tentativas} tentativa` : `${tentativas} tentativas` }`;
-  
-  if(chute == numeroSecreto){
-    exibirTextoNaTexto("h1", "Acertou!")
-    exibirTextoNaTexto("p", `Você descobriu o número secreto ${mensagemTentativas}!`)
-    document.getElementById("reiniciar").removeAttribute("disabled");
-    
-}else {
-    exibirTextoNaTexto("h1", "Tente Novamente!")
-    exibirTextoNaTexto("p", `Dica: O número é ${numeroSecreto > chute ? "maior" : "menor"} que ${chute}`)
-}
+  if (chute > 0 && chute <= numeroMaximo){
+      tentativas ++;
+      const mensagemTentativas =  ` em ${tentativas == 1 ? `${tentativas} tentativa` : `${tentativas} tentativas` }`;
+      
+      if(chute == numeroSecreto){
+        exibirTextoNaTexto("h1", "Acertou!")
+        exibirTextoNaTexto("p", `Você descobriu o número secreto ${mensagemTentativas}!`)
+        document.getElementById("reiniciar").removeAttribute("disabled");
+        
+    }else {
+        exibirTextoNaTexto("h1", "Tente Novamente!")
+        exibirTextoNaTexto("p", `Dica: O número é ${numeroSecreto > chute ? "maior" : "menor"} que ${chute}`)
+    }
 
-if (chute != numeroSecreto){
-    limparCampo();
-}else{
-    document.querySelector("input").disabled = true;
-    document.getElementById("chute").disabled = true
+    if (chute != numeroSecreto){
+        limparCampo();
+    }else{
+        document.querySelector("input").disabled = true;
+        document.getElementById("chute").disabled = true
 
+    }
+  }else{
+    alert(`Digite um número entre 1 e ${numeroMaximo}`)
   }
 }
 
