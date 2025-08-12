@@ -66,7 +66,9 @@ const verificarChute = () =>{
 
     }
   }else{
-    alert(`Digite um número entre 1 e ${numeroMaximo}`)
+    exibirTextoNaTexto("h1", "Aviso!")
+    exibirTextoNaTexto("p", `Digite um numero entre 1 e ${numeroMaximo}.`)
+    limparCampo()
   }
 }
 
